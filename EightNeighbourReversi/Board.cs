@@ -5,7 +5,7 @@ namespace EightNeighbourReversi
     class Board 
     {
         private Disc[,] board;
-
+        private int arraylength;
         public Disc this[int i, int j]
         {
             get { return board[i, j]; }
@@ -52,7 +52,7 @@ namespace EightNeighbourReversi
 
         private bool IsLegal(int row, int column, Disc toPlace) {
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
-            for (int i = 0; i < )
+            //for (int i = 0; i < )
             //else return false
             return false;
         }
