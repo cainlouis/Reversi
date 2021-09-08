@@ -52,7 +52,25 @@ namespace EightNeighbourReversi
 
         private bool IsLegal(int row, int column, Disc toPlace) {
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
-            //for (int i = 0; i < )
+            if (this.board[row,column] == Disc.EMPTY)
+            {
+                for (int i = 0; i < this.board.Length; i++) 
+                {
+                    for (int j = 0; i < this.board.Length; j++)
+                    {
+                        if (board[i,j] == toPlace)
+                        {
+                            if (i == row || i == row + 1 || i == row -1)
+                            {
+                                if (j == column || j == column + 1 || j == column -1)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             //else return false
             return false;
         }
@@ -60,6 +78,22 @@ namespace EightNeighbourReversi
         private void ConvertNeighbours(int row, int column, Disc toPlace)
         {
             //TO DO: Convert all neighbouring Disc to toPlace
+            for (int i = 0; i < board.Length; i++)
+            {
+                for (int j = 0; j < board.Length; j++)
+                {
+                    if (i == row || i == row - 1 || i == row + 1)
+                    {
+                        if (j == column || j == column + 1 || j == column - 1)
+                        {
+                            if (!(board[i,j] == Disc.EMPTY))
+                            {
+                                board[i,j] = toPlace;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
