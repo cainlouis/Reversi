@@ -95,5 +95,40 @@ namespace EightNeighbourReversi
                 }
             }
         }
+
+        public Result GetWinner() 
+        {
+            int red = 0;
+            int white = 0;
+            for (int i = 0; i < this.board.Length; i++)
+            {
+                for (int j = 0; j < this.board.Length; j++)
+                {
+                    if (!(board[i,j] == Disc.EMPTY))
+                    {
+                        if (board[i,j] == Disc.RED)
+                        {
+                            red++;
+                        }
+                        else
+                        {
+                            white++;
+                        }
+                    }
+                }
+            }
+            if (red > white)
+            {
+                return Result.RED;
+            }
+            else if (red < white)
+            {
+                return Result.WHITE;
+            }
+            else
+            {
+                return Result.TIE;
+            }
+        }
     }
 }
