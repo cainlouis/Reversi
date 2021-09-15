@@ -2,7 +2,7 @@ using System;
 
 namespace EightNeighbourReversi
 {
-    enum Result 
+    public enum Result 
     {
         RED,
         WHITE,

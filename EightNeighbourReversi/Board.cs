@@ -2,7 +2,7 @@ using System;
 
 namespace EightNeighbourReversi
 {
-    class Board 
+    public class Board 
     {
         private Disc[,] board;
 
@@ -39,10 +39,7 @@ namespace EightNeighbourReversi
                    else {
                        this.board[i, j] = Disc.EMPTY;
                    }
-                   Console.Write(board[i,j]);
-                   Console.Write(" ");
                }
-               Console.WriteLine("");
            }
         }
 
@@ -64,18 +61,6 @@ namespace EightNeighbourReversi
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
             if (this.board[row,column] == Disc.EMPTY)
             {
-                /*if (row == 0 || row == size -1 || column == 0 || column == size -1)
-                {
-                    if ()
-                }
-                Disc[] offsets = {board[row -1, column -1], board[row, column -1], board[row +1, column -1], board[row -1, column], board[row +1, column], board[row -1, column +1], board[row, column +1], board[row +1, column +1]};
-                foreach(Disc dc in offsets) 
-                {
-                    if (dc == toPlace)
-                    {
-                        return true;
-                    }
-                }*/
                 for (int i = 0; i < size; i++) 
                 {
                     for (int j = 0; i < size; j++)
@@ -153,8 +138,9 @@ namespace EightNeighbourReversi
             }
         }
 
-        public Disc[,] Copy() 
-        {
+        public Board Copy() 
+        {   
+            Board boardCopy = new Board(size);
             Disc[,] copied = new Disc[size, size];
             for (int i = 0; i < size; i++)
             {
@@ -163,15 +149,17 @@ namespace EightNeighbourReversi
                     copied[i,j] = board[i,j];
                 }
             }
-            return copied;
+            boardCopy.board = copied;
+            return boardCopy;
         }
 
         public override string ToString()
         {
-            string strboard = "|"; 
+            string strboard = ""; 
             for (int i = 0; i < size; i++) {
+                strboard += i < 10 ? i + "  |" : i + " |";
                 for (int j = 0; j < size; j++)
-                {
+                {    
                     if (board[i,j] == Disc.RED)
                     {
                         strboard += "R|";
@@ -186,10 +174,31 @@ namespace EightNeighbourReversi
                     }
                 }
                 if (!(i == size -1)) {
-                    strboard += "\n|";
+                    strboard += "\n";
                 }
             }
             return strboard;
+        }
+
+        public int getSize() {
+            return size;
+        }
+
+        public bool isFull(Disc playerDisc) {
+            for (int i = 0; i < size; i++) 
+            {
+                for (int j = 0; j < size; j++) 
+                {
+                    if (board[i,j] == Disc.EMPTY)
+                    {
+                        if (IsLegal(i,j,playerDisc))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

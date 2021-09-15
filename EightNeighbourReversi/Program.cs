@@ -6,7 +6,7 @@ namespace EightNeighbourReversi
     {
         static void Main(string[] args)
         {
-            Board b = new Board(6);
+            Board b = new Board(12);
             Console.WriteLine("");
             Console.Write(b.ToString());
         }

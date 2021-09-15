@@ -2,7 +2,7 @@ using System;
 
 namespace EightNeighbourReversi
 {
-   class Position 
+   public class Position 
    {
        private int row;
        private int column;
