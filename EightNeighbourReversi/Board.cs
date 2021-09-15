@@ -200,5 +200,14 @@ namespace EightNeighbourReversi
             }
             return true;
         }
+
+        public bool BotPlayer(int row, int column, Disc botDisc)
+        {
+            if (IsLegal(row, column, botDisc))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
