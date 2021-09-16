@@ -10,7 +10,7 @@ namespace EightNeighbourReversi
             Console.WriteLine("Your disc is white");
             BotPlayer botPlayer = new BotPlayer(Disc.RED);
             Game reversi = new Game(humanPlayer, botPlayer);
-            reversi.Play();
+            Console.WriteLine("Winner is " + reversi.Play() + "!");
         }
     }
 }

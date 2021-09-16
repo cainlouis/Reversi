@@ -41,11 +41,13 @@ namespace EightNeighbourReversi
                 {  
                     //If the human player throw the exception catch and calculate the winner
                     winner = boardCopy.GetWinner();
+                    Console.WriteLine(boardCopy.ToString());
                     return winner;
                 }
             }
             //Once the board is full calculate the winner
             winner = boardCopy.GetWinner();
+            Console.WriteLine(boardCopy.ToString());
             return winner;
         }
     }

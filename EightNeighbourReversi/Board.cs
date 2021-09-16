@@ -161,12 +161,12 @@ namespace EightNeighbourReversi
             {
                 minColumn = column - 1;
             }   
-            for (int i = minRow; i < maxRow; i++)
+            for (int i = minRow; i <= maxRow; i++)
             {
                 for (int j = minColumn; j <= maxColumn; j++)
                 {
                     
-                    if (!(board[i,j] == Disc.EMPTY) && (board[i,j] == toPlace))
+                    if (!(board[i,j] == Disc.EMPTY) && !(board[i,j] == toPlace))
                     {
                         board[i,j] = toPlace;
                     }

@@ -11,20 +11,39 @@ namespace EightNeighbourReversi
             MyDisc = disc;
         }
         public Position ChooseMove(Board board) {
-            int dimension = board.getSize();
-            Position position;
-            for (int i = 0; i < dimension; i++)
-            {
-                for (int j = 0; j < dimension; j++)
+            if (!board.isFull()) {
+                int dimension = board.getSize();
+                Position[] legalPos;
+                int counter = 0;
+                for (int i = 0; i < dimension; i++)
                 {
-                    if (board.IsLegal(i,j,MyDisc)) {
-                        position = new Position(i, j);
-                        return position;
+                    for (int j = 0; j < dimension; j++)
+                    {
+                        if (board.IsLegal(i,j,MyDisc)) {
+                            counter++;
+                        }
                     }
                 }
+                if (counter > 0)
+                {
+                    legalPos = new Position[counter];
+                    int index = 0;
+                    for (int i = 0; i < dimension; i++)
+                    {
+                        for (int j = 0; j < dimension; j++)
+                        {
+                            if (board.IsLegal(i,j,MyDisc)) {
+                                legalPos[index] = new Position(i, j);
+                                index++;
+                            }
+                        }
+                    }
+                    Random random = new Random();
+                    int rand = random.Next(counter);
+                    return legalPos[rand];
+                }
             }
-            return null;
+            throw new InvalidOperationException("Board full, cannot play");
         }
-
     }
 }
