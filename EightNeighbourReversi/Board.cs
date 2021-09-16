@@ -60,20 +60,57 @@ namespace EightNeighbourReversi
         public bool IsLegal(int row, int column, Disc toPlace) {
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
             if (this.board[row,column] == Disc.EMPTY)
-            {
-                for (int i = 0; i < size; i++) 
+            {   
+                //Create max variable for the index of the neighbouring disc to have the same value as toPlace
+                int maxRow;
+                //If the row + 1 is equal to the size, hence greater than the last index
+                if (row + 1 > size - 1)
                 {
-                    for (int j = 0; i < size; j++)
+                    //Then the maximum index to check is the last index
+                    maxRow = size - 1;
+                //if not,
+                } else
+                {
+                    //Then the maximum index to check is the next row
+                    maxRow = row + 1;
+                }
+                int maxColumn;
+                if (column + 1 > size - 1)
+                {
+                    maxColumn = size - 1;
+                } else
+                {
+                    maxColumn = column + 1;
+                }
+                //Create a variable for the minimun index of the neighbouring disc to have the same value as toPlace
+                int minRow;
+                //If the row - 1 is smaller than 0, hence out of bounds, then minRow is 0
+                if (row - 1 < 0)
+                {
+                    minRow = 0;
+                //if not,
+                } else
+                {
+                    //then minRow is row -1
+                    minRow = row - 1;
+                }
+                int minColumn;
+                if (column - 1 < 0)
+                {
+                    minColumn = 0;
+                } else
+                {
+                    minColumn = column - 1;
+                }
+
+                //
+                for (int i = minRow; i < maxRow + 1; i++) 
+                {
+                    for (int j = minColumn; j < maxColumn; j++)
                     {
-                        if (board[i,j] == toPlace)
+                        if (board[i, j] == toPlace)
                         {
-                            if (i == row || i == row + 1 || i == row -1)
-                            {
-                                if (j == column || j == column + 1 || j == column -1)
-                                {
-                                    return true;
-                                }
-                            }
+                            return true;
                         }
                     }
                 }
@@ -85,22 +122,57 @@ namespace EightNeighbourReversi
         private void ConvertNeighbours(int row, int column, Disc toPlace)
         {
             //TO DO: Convert all neighbouring Disc to toPlace
-            for (int i = 0; i < size; i++)
+            int maxRow;
+            //If the row + 1 is equal to the size, hence greater than the last index
+            if (row + 1 == size)
             {
-                for (int j = 0; j < size; j++)
+                //Then the maximum index to check is the last index
+                maxRow = size - 1;
+            //if not,
+            } else
+            {
+                //Then the maximum index to check is the next row
+                maxRow = row + 1;
+            }
+            int maxColumn;
+            if (column + 1 == size)
+            {
+                maxColumn = size - 1;
+            } else
+            {
+                maxColumn = column + 1;
+            }
+            //Create a variable for the minimun index of the neighbouring disc to have the same value as toPlace
+            int minRow;
+            //If the row - 1 is smaller than 0, hence out of bounds, then minRow is 0
+            if (row - 1 < 0)
+            {
+                minRow = 0;
+            //if not,
+            } else
+            {
+                //then minRow is row -1
+                minRow = row - 1;
+            }
+            int minColumn;
+            if (column - 1 < 0)
+            {
+                minColumn = 0;
+            } else
+            {
+                minColumn = column - 1;
+            }   
+            for (int i = minRow; i < maxRow; i++)
+            {
+                for (int j = minColumn; j < maxColumn; j++)
                 {
-                    if (i == row || i == row - 1 || i == row + 1)
+                    
+                    if (!(board[i,j] == Disc.EMPTY && board[i,j] == toPlace))
                     {
-                        if (j == column || j == column + 1 || j == column - 1)
-                        {
-                            if (!(board[i,j] == Disc.EMPTY && board[i,j] == toPlace))
-                            {
-                                board[i,j] = toPlace;
-                            }
-                        }
+                        board[i,j] = toPlace;
                     }
                 }
-            } 
+            }
         }
 
         public Result GetWinner() 
