@@ -7,6 +7,11 @@ namespace EightNeighbourReversi
     {
         public Disc MyDisc{get;}
 
+        public HumanPlayer(Disc disc) 
+        {
+            MyDisc = disc;
+        }
+
         public Position ChooseMove(Board board) {
             //Display the board
             board.ToString();

@@ -5,6 +5,11 @@ namespace EightNeighbourReversi
     public class BotPlayer : IPlayer
     {
         public Disc MyDisc{get;}
+
+        public BotPlayer(Disc disc) 
+        {
+            MyDisc = disc;
+        }
         public Position ChooseMove(Board board) {
             int dimension = board.getSize();
             Position position;
