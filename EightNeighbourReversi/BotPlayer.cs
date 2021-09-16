@@ -12,7 +12,7 @@ namespace EightNeighbourReversi
             {
                 for (int j = 0; j < dimension; j++)
                 {
-                    if (board.BotPlayer(i,j,MyDisc)) {
+                    if (board.IsLegal(i,j,MyDisc)) {
                         position = new Position(i, j);
                         return position;
                     }

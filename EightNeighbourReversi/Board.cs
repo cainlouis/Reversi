@@ -57,7 +57,7 @@ namespace EightNeighbourReversi
             return false;
         }
 
-        private bool IsLegal(int row, int column, Disc toPlace) {
+        public bool IsLegal(int row, int column, Disc toPlace) {
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
             if (this.board[row,column] == Disc.EMPTY)
             {
@@ -184,30 +184,20 @@ namespace EightNeighbourReversi
             return size;
         }
 
-        public bool isFull(Disc playerDisc) {
+        public bool isFull() {
             for (int i = 0; i < size; i++) 
             {
                 for (int j = 0; j < size; j++) 
                 {
                     if (board[i,j] == Disc.EMPTY)
                     {
-                        if (IsLegal(i,j,playerDisc))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
             }
             return true;
         }
 
-        public bool BotPlayer(int row, int column, Disc botDisc)
-        {
-            if (IsLegal(row, column, botDisc))
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }
