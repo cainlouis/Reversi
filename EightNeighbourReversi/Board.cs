@@ -48,7 +48,7 @@ namespace EightNeighbourReversi
             if (board[row, column] == Disc.EMPTY)
             {
                 if (IsLegal(row, column, toPlace))
-                {
+                {   
                     board[row, column] = toPlace;
                     ConvertNeighbours(row, column, toPlace);
                     return true;
@@ -103,11 +103,10 @@ namespace EightNeighbourReversi
                     minColumn = column - 1;
                 }
 
-                //
                 for (int i = minRow; i < maxRow + 1; i++) 
                 {
-                    for (int j = minColumn; j < maxColumn; j++)
-                    {
+                    for (int j = minColumn; j <= maxColumn; j++)
+                    {   
                         if (board[i, j] == toPlace)
                         {
                             return true;
@@ -164,10 +163,10 @@ namespace EightNeighbourReversi
             }   
             for (int i = minRow; i < maxRow; i++)
             {
-                for (int j = minColumn; j < maxColumn; j++)
+                for (int j = minColumn; j <= maxColumn; j++)
                 {
                     
-                    if (!(board[i,j] == Disc.EMPTY && board[i,j] == toPlace))
+                    if (!(board[i,j] == Disc.EMPTY) && (board[i,j] == toPlace))
                     {
                         board[i,j] = toPlace;
                     }
@@ -195,6 +194,7 @@ namespace EightNeighbourReversi
                         }
                     }
                 }
+
             }
             if (red > white)
             {
@@ -245,9 +245,11 @@ namespace EightNeighbourReversi
                         strboard += "-|";
                     }
                 }
-                if (!(i == size -1)) {
-                    strboard += "\n";
-                }
+                strboard += "\n";
+            }
+            strboard += "   ";
+            for (int i = 0; i < size; i++) {
+                strboard += " " + i;
             }
             return strboard;
         }

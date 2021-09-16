@@ -14,7 +14,7 @@ namespace EightNeighbourReversi
 
         public Position ChooseMove(Board board) {
             //Display the board
-            board.ToString();
+            Console.WriteLine(board.ToString());
             Position position;
             //Get the size of the board
             int dimension = board.getSize();
