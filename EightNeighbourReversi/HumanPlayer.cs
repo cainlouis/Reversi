@@ -34,6 +34,7 @@ namespace EightNeighbourReversi
             for the position they want to place their disc in */
             if ((!board.isFull()) && continueGame)
             {   
+                do {
                 Console.WriteLine("Enter a number for the row");
                 int row = int.Parse(Console.ReadLine());
                 //Verify that their choice for the row is within bound, if not ask them to select another
@@ -52,6 +53,11 @@ namespace EightNeighbourReversi
                 }
                 //create position with their choice and return
                 position = new Position(row, column);
+                if (!board.IsLegal(position.getRow(), position.getColumn(), MyDisc))
+                {
+                    Console.WriteLine("Illegal move, select another");
+                }
+                } while(!board.IsLegal(position.getRow(), position.getColumn(), MyDisc));
                 return position;
             }
             //Throw an exception if the board is full or there is no legal placement left
