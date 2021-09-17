@@ -77,47 +77,17 @@ namespace EightNeighbourReversi
             //TO DO: check if on of the 8 neighbouring discs have the same value as toPlace
             if (this.board[row,column] == Disc.EMPTY)
             {   
-                //Create max variable for the index of the neighbouring disc to have the same value as toPlace
-                int maxRow;
-                //If the row + 1 is equal to the size, hence greater than the last index
-                if (row + 1 > size - 1)
-                {
-                    //Then the maximum index to check is the last index
-                    maxRow = size - 1;
-                //if not,
-                } else
-                {
-                    //Then the maximum index to check is the next row
-                    maxRow = row + 1;
-                }
-                int maxColumn;
-                if (column + 1 > size - 1)
-                {
-                    maxColumn = size - 1;
-                } else
-                {
-                    maxColumn = column + 1;
-                }
-                //Create a variable for the minimun index of the neighbouring disc to have the same value as toPlace
-                int minRow;
-                //If the row - 1 is smaller than 0, hence out of bounds, then minRow is 0
-                if (row - 1 < 0)
-                {
-                    minRow = 0;
-                //if not,
-                } else
-                {
-                    //then minRow is row -1
-                    minRow = row - 1;
-                }
-                int minColumn;
-                if (column - 1 < 0)
-                {
-                    minColumn = 0;
-                } else
-                {
-                    minColumn = column - 1;
-                }
+                /*If the row + 1 is equal to the size, hence greater than the last index
+                Then the maximum index to check is the last index
+                If not, then the maximum index to check is the next row*/
+                int maxRow = row + 1 == size ? size - 1 : row + 1;
+                /*If the row - 1 is smaller than 0, hence out of bounds, then minRow is 0
+                If not, then minRow is row -1*/
+                int minRow = row - 1 < 0 ? 0 : row - 1;
+            
+                int maxColumn = column + 1 == size ? size - 1 : column + 1;
+                int minColumn = column - 1 < 0 ? 0 : column - 1; 
+
                 /*for any of the disc withing the bounds created check if there is a neighbour 
                 that has the player's disc. return true if there is*/
                 for (int i = minRow; i < maxRow + 1; i++) 
@@ -138,47 +108,12 @@ namespace EightNeighbourReversi
         //Convert any neighbour of the player's disc into their disc
         private void ConvertNeighbours(int row, int column, Disc toPlace)
         {
-            //TO DO: Convert all neighbouring Disc to toPlace
-            int maxRow;
-            //If the row + 1 is equal to the size, hence greater than the last index
-            if (row + 1 == size)
-            {
-                //Then the maximum index to check is the last index
-                maxRow = size - 1;
-            //if not,
-            } else
-            {
-                //Then the maximum index to check is the next row
-                maxRow = row + 1;
-            }
-            int maxColumn;
-            if (column + 1 == size)
-            {
-                maxColumn = size - 1;
-            } else
-            {
-                maxColumn = column + 1;
-            }
-            //Create a variable for the minimun index of the neighbouring disc to have the same value as toPlace
-            int minRow;
-            //If the row - 1 is smaller than 0, hence out of bounds, then minRow is 0
-            if (row - 1 < 0)
-            {
-                minRow = 0;
-            //if not,
-            } else
-            {
-                //then minRow is row -1
-                minRow = row - 1;
-            }
-            int minColumn;
-            if (column - 1 < 0)
-            {
-                minColumn = 0;
-            } else
-            {
-                minColumn = column - 1;
-            }
+            int maxRow = row + 1 == size ? size - 1 : row + 1;
+            int minRow = row - 1 < 0 ? 0 : row - 1;
+
+            int maxColumn = column + 1 == size ? size - 1 : column + 1;
+            int minColumn = column - 1 < 0 ? 0 : column - 1; 
+            
             //For any of the disc within the bounds created    
             for (int i = minRow; i <= maxRow; i++)
             {
