@@ -14,8 +14,8 @@ namespace EightNeighbourReversi
         /*Get the boar copy and choose a move to make and return the position chosen*/
         public Position ChooseMove(Board board) {
             //if board not full proceed 
-            if (!board.isFull()) {
-                int dimension = board.getSize();
+            if (!board.IsFull()) {
+                int dimension = board.GetSize();
                 Position[] legalPos;
                 int counter = 0;
                 //Check every disc of the board to get a legal position to choose

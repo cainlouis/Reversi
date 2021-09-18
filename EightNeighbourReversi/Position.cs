@@ -14,12 +14,12 @@ namespace EightNeighbourReversi
        }
 
         //Getters methods for the fields
-       public int getRow() 
+       public int GetRow() 
        {
            return this.row;
        }
 
-       public int getColumn() 
+       public int GetColumn() 
        {
            return this.column;
        }

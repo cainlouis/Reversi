@@ -19,11 +19,11 @@ namespace EightNeighbourReversi
         {
            this.board = new Disc[size, size];
            this.size = size;
-           setStartingDisc(); 
+           SetStartingDisc(); 
         }
 
         //Set the starting disc for both player and disc.empty for the rest of the board
-        private void setStartingDisc()
+        private void SetStartingDisc()
         {
             for (int i = 0; i < size; i++)
            {
@@ -218,12 +218,12 @@ namespace EightNeighbourReversi
         }
 
         //Getter method for the dimension of the board
-        public int getSize() {
+        public int GetSize() {
             return size;
         }
 
         //Check if the board is full and return a bool accordingly
-        public bool isFull() {
+        public bool IsFull() {
             for (int i = 0; i < size; i++) 
             {
                 for (int j = 0; j < size; j++) 
