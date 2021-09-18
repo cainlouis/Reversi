@@ -36,17 +36,17 @@ namespace EightNeighbourReversi
             Result winner;
             Position position;
             //As long as the board is not full
-            while (!boardCopy.isFull())
+            while (!boardCopy.IsFull())
             {
                 try
                 {
                     //Human player choose move 
                     position = humanPlayer.ChooseMove(boardCopy);
                     //then place the disc if possible
-                    boardCopy.PlaceDisc(position.getRow(), position.getColumn(), humanPlayer.MyDisc);
+                    boardCopy.PlaceDisc(position.GetRow(), position.GetColumn(), humanPlayer.MyDisc);
 
                     position = botPlayer.ChooseMove(boardCopy);
-                    boardCopy.PlaceDisc(position.getRow(), position.getColumn(), botPlayer.MyDisc);
+                    boardCopy.PlaceDisc(position.GetRow(), position.GetColumn(), botPlayer.MyDisc);
                 }
                 catch (InvalidOperationException)
                 {  
