@@ -15,9 +15,20 @@ namespace EightNeighbourReversi
 
         public Result Play() 
         {
-            //Ask the player to enter the size of board
-            Console.WriteLine("Enter the size of the board");
-            int size = int.Parse(Console.ReadLine());
+            int size;
+            bool success;
+            int counter = 0;
+            do
+            {
+                if (counter > 0)
+                {
+                    Console.WriteLine("Make sure to enter a number, try again");
+                }
+                //Ask the player to enter the size of board
+                Console.WriteLine("Enter the size of the board");
+                success = int.TryParse(Console.ReadLine(), out size);
+                counter++;
+            } while (!success);
             //create the board according to the size 
             Board gameBoard = new Board(size);
             //Create the copy of the board

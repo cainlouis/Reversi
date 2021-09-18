@@ -36,22 +36,33 @@ namespace EightNeighbourReversi
             {   
                 //As the player to enter a legal position until they do
                 do {
-                Console.WriteLine("Enter a number for the row");
-                int row = int.Parse(Console.ReadLine());
-                //Verify that their choice for the row is within bound, if not ask them to select another
-                if (row >= dimension)
+                bool success;
+                int row;
+                int column;
+                int counter = 0;
+                //Verify that their choice for the row is within bound and a number, if not ask them to select another
+                do
                 {
-                    Console.WriteLine("Invalid number, insert a number smaller than " + dimension);
-                    row = int.Parse(Console.ReadLine());
-                }
-                Console.WriteLine("Enter a number for the column");
-                int column = int.Parse(Console.ReadLine());
+                    if (counter > 0)
+                    {
+                        Console.WriteLine("Make sure to enter a number in bound, choose again.");
+                    }
+                    Console.WriteLine("Enter a number for the row");
+                    success = int.TryParse(Console.ReadLine(), out row);
+                    counter++;
+                } while (row >= dimension || !(success));
+                counter = 0;
                 //Verify that their choice for the column is within bound, if not ask them to select another 
-                if (row >= dimension)
+                do
                 {
-                    Console.WriteLine("Invalid number, insert a number smaller than " + dimension);
-                    column = int.Parse(Console.ReadLine());
-                }
+                    if (counter > 0)
+                    {
+                        Console.WriteLine("Make sure to enter a number in bound, choose again.");
+                    }
+                    Console.WriteLine("Enter a number for the column");
+                    success = int.TryParse(Console.ReadLine(), out column);
+                    counter++;
+                } while (column >= dimension || !(success));
                 //create position with their choice and return
                 position = new Position(row, column);
                 //If the position is not a legal move then print a message 
